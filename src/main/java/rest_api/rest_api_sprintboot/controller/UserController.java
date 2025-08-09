@@ -1,6 +1,6 @@
 package rest_api.rest_api_sprintboot.controller;
 
-import rest_api.rest_api_sprintboot.model.User;
+import rest_api.rest_api_sprintboot.entity.User;
 import rest_api.rest_api_sprintboot.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

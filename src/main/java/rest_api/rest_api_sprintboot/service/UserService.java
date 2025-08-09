@@ -1,10 +1,10 @@
 package rest_api.rest_api_sprintboot.service;
 
-import rest_api.rest_api_sprintboot.model.User;
+import rest_api.rest_api_sprintboot.entity.User;
 import rest_api.rest_api_sprintboot.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -19,7 +19,15 @@ public class UserService {
     }
 
     public User findUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        Optional<User> findUserById = userRepository.findById(id);
+
+        // If user not found, throw exception
+        if (!findUserById.isPresent()) {
+            throw new RuntimeException("Usuario no encontrado");
+        }
+
+        // Return the User object
+        return findUserById.get();
     }
 
     public User saveUser(User user) {

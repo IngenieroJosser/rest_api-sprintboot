@@ -1,8 +1,6 @@
-package rest_api.rest_api_sprintboot.model;
+package rest_api.rest_api_sprintboot.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -11,26 +9,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El campo nombre es requerido")
     private String name;
 
-    @Email(message = "El campo email debe tener un formato valido")
     @Column(unique = true)
     private String email;
 
-    public User() {} // Constructor vacío para JPA
+    protected User() {} // Necesario para JPA
 
     public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
 
+    // Getters y Setters
     public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
     public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
     public String getEmail() { return email; }
+
+    public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }
 }
