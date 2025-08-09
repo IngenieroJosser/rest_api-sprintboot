@@ -18,7 +18,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    public User() {}
+    public User() {} // Constructor vacío para JPA
 
     public User(String name, String email) {
         this.name = name;
